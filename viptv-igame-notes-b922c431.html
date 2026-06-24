@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 场景导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #ffedd5 0%, #fbe9e0 40%, #fce4d6 80%, #fff5ec 100%);
+      min-height: 100vh;
+      padding: 2rem 1.2rem;
+      color: #3e2e23;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: rgba(255, 250, 245, 0.7);
+      backdrop-filter: blur(6px);
+      border-radius: 48px 48px 32px 32px;
+      padding: 2.2rem 2rem 3rem;
+      box-shadow: 0 20px 40px -12px rgba(110, 60, 30, 0.20);
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #f0dbcf;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      background: #f7dfd0;
+      padding: 0.3rem 1.2rem 0.3rem 1rem;
+      border-radius: 40px;
+      color: #4b3325;
+    }
+
+    .logo-area span {
+      font-size: 1.3rem;
+      margin-right: 0.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5d4033;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.35rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b4836c;
+      color: #3d281f;
+    }
+
+    /* hero 区 */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.6rem;
+      padding: 0.8rem 0.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: 2px;
+      color: #402f23;
+      background: linear-gradient(to right, #b57b60, #9a6a52);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: #5f473a;
+      background: rgba(255, 242, 232, 0.5);
+      padding: 0.8rem 1.4rem;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+    }
+
+    /* 核心介绍卡片 */
+    .intro-card {
+      background: #ffffffef;
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 2rem 2.2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 6px 18px rgba(140, 85, 55, 0.08);
+      border: 1px solid #f6e3d9;
+    }
+
+    .intro-card p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-card strong {
+      color: #7b5541;
+    }
+
+    /* 三个场景模块 */
+    .scenes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 3.2rem;
+      justify-content: center;
+    }
+
+    .scene-item {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      flex: 1 1 240px;
+      min-width: 210px;
+      border-radius: 28px;
+      padding: 1.8rem 1.4rem 2rem;
+      box-shadow: 0 10px 18px -6px rgba(95, 60, 40, 0.12);
+      border: 1px solid #f4e2d6;
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .scene-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 28px -10px rgba(110, 65, 40, 0.16);
+      background: #fffcf8;
+    }
+
+    .scene-item .emoji-badge {
+      display: inline-block;
+      background: #f4d9cb;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-size: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .scene-item h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      margin-bottom: 0.5rem;
+      color: #4e372b;
+    }
+
+    .scene-item p {
+      font-size: 0.95rem;
+      color: #5a4538;
+      margin-bottom: 0.2rem;
+    }
+
+    .scene-item .tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #eccebd;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #422f24;
+    }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-summary {
+      background: #fffbf7e0;
+      backdrop-filter: blur(2px);
+      border-radius: 30px;
+      padding: 1.8rem 2rem 2.2rem;
+      margin-bottom: 2.6rem;
+      border: 1px solid #f1dccf;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.4rem;
+      font-weight: 540;
+      margin-bottom: 1.4rem;
+      color: #4e382b;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem 2rem;
+    }
+
+    .faq-item {
+      border-left: 4px solid #dbb9a7;
+      padding-left: 1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 530;
+      color: #4b3428;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.93rem;
+      color: #5d4639;
+    }
+
+    /* 明显的链接按钮感 */
+    .link-button {
+      display: inline-block;
+      background: #ffffffec;
+      border: 1px solid #dbb9a7;
+      padding: 0.4rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #4e382b;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(150, 90, 60, 0.05);
+      margin: 0 0.2rem;
+    }
+
+    .link-button:hover {
+      background: #faeade;
+      border-color: #b48365;
+      box-shadow: 0 4px 10px rgba(140, 80, 50, 0.10);
+      transform: scale(1.02);
+    }
+
+    .inline-link {
+      color: #7a553f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dashed #ccaa98;
+      transition: border 0.2s;
+    }
+
+    .inline-link:hover {
+      border-bottom-style: solid;
+      border-bottom-color: #8b6048;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .container {
+        padding: 1.5rem 1.2rem;
+      }
+      .top-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+      }
+      .nav-links {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+      .scene-item {
+        flex: 1 1 100%;
+      }
+      .intro-card {
+        padding: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0.8rem;
+      }
+      .logo-area {
+        font-size: 1.2rem;
+        padding: 0.2rem 1rem;
+      }
+      .hero p {
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+      }
+      .faq-summary {
+        padding: 1.2rem;
+      }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2.8rem;
+      font-size: 0.85rem;
+      color: #7c6457;
+      border-top: 1px solid #ecdbd0;
+      padding-top: 1.8rem;
+      letter-spacing: 0.3px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- 导航 -->
+  <nav class="top-nav">
+    <div class="logo-area">
+      <span>🎮</span> 爱游戏
+    </div>
+    <div class="nav-links">
+      <a href="#intro">介绍</a>
+      <a href="#scenes">场景</a>
+      <a href="#faq">常见说明</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>日常查询 · 对照 · 延伸阅读</h1>
+    <p>围绕 <a href="https://viptv-igame.com" class="inline-link" style="border-bottom:2px solid #c9aa98;">爱游戏</a> 整理的内容线索 —— 适合快速浏览、随手查阅，不用反复跳转。</p>
+  </div>
+
+  <!-- 核心介绍卡片 -->
+  <div class="intro-card" id="intro">
+    <p><strong>爱游戏</strong> 这个名字本身就有一种随开随用的亲近感。它不是一个必须“进入”的终点，更像一个内容集散地：你可以在某个页面看到玩法对照，在另一个页面找到版本说明，或者纯粹点开一篇延伸阅读，了解自己感兴趣的细节。</p>
+    <p>下面三个模块是从最常被问到的角度切出来的——<strong>日常查询、快速对照、延伸阅读</strong>。每个模块都指向 <a href="https://viptv-igame.com" class="inline-link">爱游戏</a> 里真实存在的内容类型，不堆砌功能，只整理线索。</p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes" id="scenes">
+    <div class="scene-item">
+      <div class="emoji-badge">🔍</div>
+      <h3>日常查询</h3>
+      <p>版本号、更新日志、常见名词解释。省去自己翻记录的时间，按分类索引直接定位。</p>
+      <span class="tag">对照索引</span>
+    </div>
+    <div class="scene-item">
+      <div class="emoji-badge">📋</div>
+      <h3>快速对照</h3>
+      <p>把容易混淆的设定、数值、条件并列展示。适合需要对比确认的时候扫一眼。</p>
+      <span class="tag">并列视图</span>
+    </div>
+    <div class="scene-item">
+      <div class="emoji-badge">📖</div>
+      <h3>延伸阅读</h3>
+      <p>来自不同角度的整理笔记、背景说明、使用思路。不赶时间的时候可以当短文看。</p>
+      <span class="tag">背景笔记</span>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="faq-summary" id="faq">
+    <h2>📌 常见说明 · 摘要</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="q">内容会频繁变动吗？</div>
+        <div class="a">根据使用反馈和版本节奏调整，不是固定模板，每次更新都会做一次梳理。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">我能把这些场景当目录用吗？</div>
+        <div class="a">完全可以。三个模块本身就是为了快速定位而分组的，相当于一个轻量索引。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">延伸阅读的资料来自哪里？</div>
+        <div class="a">来自不同使用者整理的经验和说明，经过筛选后以短文形式呈现，方便消化。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">有没有搜索或筛选功能？</div>
+        <div class="a">页面本身保持轻量导航，暂时没有内置搜索，但分类已经尽量贴近常用查询习惯。</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.6rem; font-size:0.95rem;">更完整的说明可以随时在 <a href="https://viptv-igame.com" class="link-button">爱游戏</a> 里找到对应页面，每个模块都指向具体内容。</p>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <span>基于日常使用场景整理 · 内容保持平实可读</span>
+  </footer>
+</div>
+</body>
+</html>
