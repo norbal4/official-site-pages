@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 快速了解网站用途</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8f9fb;
+            color: #1e1f22;
+            line-height: 1.6;
+        }
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0d1b2a 0%, #1b2e44 100%);
+            color: #eef2f6;
+            padding: 4rem 1.5rem 3.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f8f9fb;
+            border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            max-width: 680px;
+            margin: 0.4rem auto 0;
+            font-size: 1.1rem;
+            color: #cbd5df;
+        }
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 1.6rem;
+            background: rgba(220, 240, 255, 0.12);
+            padding: 0.45rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+            color: #dce9f5;
+        }
+        /* 浅色正文区域 */
+        .container {
+            max-width: 1080px;
+            margin: -1.2rem auto 0;
+            padding: 0 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+        section {
+            margin-top: 2.8rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1b2e44;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 3px;
+            background: #d9774a;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .card {
+            background: #ffffff;
+            padding: 1.8rem 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #1f3b4f;
+        }
+        .card p {
+            color: #2d3d4e;
+            font-size: 0.98rem;
+        }
+        .accent-link {
+            color: #d9774a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border 0.15s;
+        }
+        .accent-link:hover {
+            border-bottom: 1px solid #d9774a;
+        }
+        .highlight-box {
+            background: #f0f3f7;
+            padding: 1.8rem 2rem;
+            border-radius: 18px;
+            margin: 2rem 0 1.2rem;
+            border-left: 6px solid #d9774a;
+        }
+        .faq-item {
+            margin-bottom: 1.6rem;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1b2e44;
+            margin-bottom: 0.15rem;
+        }
+        .faq-item p {
+            margin-left: 0.1rem;
+            font-size: 0.95rem;
+            color: #2d3d4e;
+        }
+        .bottom-links {
+            margin-top: 3.2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dce1e7;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            align-items: baseline;
+        }
+        .bottom-links a {
+            color: #1e3a5a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+        .bottom-links a:hover {
+            color: #d9774a;
+        }
+        .bottom-links .main-link {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #d9774a;
+        }
+        .fine-print {
+            margin-top: 2.5rem;
+            font-size: 0.85rem;
+            color: #717e8b;
+            text-align: center;
+            border-top: 1px solid #e3e8ed;
+            padding-top: 1.8rem;
+        }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 1.2rem; }
+            .container { padding: 0 1rem 3rem; }
+            .card { padding: 1.5rem; }
+            .highlight-box { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- hero 区：深色背景，快速建立认知 -->
+    <div class="hero">
+        <h1>爱游戏 · 一目了然</h1>
+        <p>通过清晰的板块与功能引导，快速理解这个网站提供什么、适合谁、怎么用。<br>没有冗余信息，帮你节省时间。</p>
+        <span class="tagline">即刻了解 · 精准定位</span>
+    </div>
+
+    <div class="container">
+
+        <!-- 优势区：从用户视角快速判断价值 -->
+        <section>
+            <div class="section-title">为什么值得关注</div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>🎯 定位明确</h3>
+                    <p>平台聚焦特定体育与竞猜场景，界面与内容都围绕核心服务展开。如果你正在寻找一个方向垂直、规则清晰的站点，<a href="https://vipsports-igame.com" class="accent-link">爱游戏</a> 能让你少走弯路。</p>
+                </div>
+                <div class="card">
+                    <h3>⚙️ 功能直给</h3>
+                    <p>从菜单布局到交互反馈，设计上更注重实用性。不需要层层跳转，常用操作基本都在主页面完成。对于习惯效率优先的用户来说，这种减法很友好。</p>
+                </div>
+                <div class="card">
+                    <h3>📱 多终端适应</h3>
+                    <p>移动端与桌面端的体验保持了一致性。无论你使用手机还是电脑，信息层级、按钮大小、文字可读性都经过适配，不必在缩放和横竖屏之间纠结。</p>
+                </div>
+                <div class="card">
+                    <h3>🔐 信息透明</h3>
+                    <p>规则说明、账户相关、帮助文档等基础内容均可在站内找到。对初次接触的用户，建议花几分钟浏览帮助板块，能减少后续操作的困惑。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区：帮助用户快速定位网站用途 -->
+        <section>
+            <div class="section-title">这个网站主要做什么</div>
+            <div class="highlight-box">
+                <p style="margin-bottom: 0.8rem;"><strong style="color:#1b2e44;">简单来说</strong> —— 这是一个整合了体育资讯、赛事数据以及互动玩法的平台。核心逻辑围绕体育迷的日常兴趣展开：你可以查看比赛信息、关注实时动态、参与基于体育场景的趣味活动。网站本身不涉及任何违法或灰色内容，所有功能均建立在常规体育服务和用户协议基础之上。</p>
+                <p>对于想快速判断“这适不适合我”的用户，建议先逛逛赛事栏目、了解积分或竞猜模式，再决定是否深入。很多时候，实际体验比看说明更直接。</p>
+            </div>
+        </section>
+
+        <!-- FAQ 摘要：解决几个最普遍的疑虑 -->
+        <section>
+            <div class="section-title">常见疑问 · 摘要</div>
+            <div class="faq-item">
+                <strong>Q：注册后马上就能用全部功能吗？</strong>
+                <p>大部分核心板块在注册后即可浏览和参与。部分需要身份验证或完成基础任务才能解锁，具体可以参考站内指引。</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：网站主要面向哪些用户？</strong>
+                <p>对体育赛事有基本兴趣的人——无论是轻度关注比分，还是喜欢分析数据、参与互动讨论，都能找到对应的内容。年龄建议参照平台服务条款。</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：遇到使用问题怎么解决？</strong>
+                <p>首页通常能找到帮助中心、常见问题列表。如果仍无法解决，可通过页面底部的联系方式与客服沟通。建议先自助查阅，效率更高。</p>
+            </div>
+        </section>
+
+        <!-- 底部链接区，包含指向爱游戏的链接（自然嵌入句子） -->
+        <div class="bottom-links">
+            <span>🔗 快速开始：可以先去 <a href="https://vipsports-igame.com" class="main-link">爱游戏</a> 浏览赛事动态，看看界面和内容是否符合你的预期。</span>
+            <a href="#">帮助中心</a>
+            <a href="#">服务条款</a>
+            <a href="#">隐私说明</a>
+        </div>
+
+        <div class="fine-print">
+            <p>本页仅为介绍用途，所有信息请以网站实际内容为准。使用前请阅读相关协议，理性参与。</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
