@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 温暖游戏社区</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce9d8 0%, #fde2c9 30%, #fdd6b5 70%, #f7cfaa 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #3d2e22;
+        }
+
+        .container {
+            max-width: 920px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* —— 卡片风格 —— */
+        .card {
+            background: rgba(255, 249, 240, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            box-shadow: 0 16px 40px -10px rgba(160, 100, 70, 0.25);
+            padding: 2.8rem 2.5rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.3s;
+            border: 1px solid rgba(255, 230, 210, 0.6);
+        }
+
+        .card:hover {
+            box-shadow: 0 18px 44px -8px rgba(140, 80, 50, 0.3);
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #3c2b1f;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: 550;
+            background: linear-gradient(135deg, #a6562c, #c47a4b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subhead {
+            text-align: center;
+            font-size: 1.15rem;
+            color: #735a47;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #edcdb6;
+            padding-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2:before {
+            content: "✦";
+            font-size: 1.6rem;
+            color: #ca8b61;
+            margin-right: 0.25rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.4rem 0 0.8rem;
+            color: #624b39;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        /* —— 按钮感链接 —— */
+        .button-link {
+            display: inline-block;
+            background: linear-gradient(115deg, #d9986c, #b66f48);
+            color: #fffcf8;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 14px rgba(170, 100, 60, 0.25);
+            border: none;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button-link:hover {
+            background: linear-gradient(115deg, #c48358, #a55d3a);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(160, 80, 45, 0.35);
+        }
+
+        .button-link:active {
+            transform: translateY(0);
+        }
+
+        .hero-cta {
+            margin-top: 1.8rem;
+            text-align: center;
+        }
+
+        /* —— 优势网格 —— */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .advantage-item {
+            background: rgba(250, 235, 220, 0.5);
+            border-radius: 28px;
+            padding: 1.6rem 1.4rem;
+            border-left: 6px solid #cd906b;
+            box-shadow: 0 4px 12px rgba(150, 90, 60, 0.08);
+        }
+
+        .advantage-item strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #4a3327;
+        }
+
+        /* —— FAQ 摘要 —— */
+        .faq-item {
+            margin: 1.2rem 0;
+            padding: 0.2rem 0;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #4f392b;
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .faq-item .q::before {
+            content: "❓";
+            font-size: 1.1rem;
+        }
+
+        .faq-item .a {
+            margin-left: 1.8rem;
+            margin-top: 0.2rem;
+            color: #4d3d31;
+            border-left: 2px solid #deb293;
+            padding-left: 1rem;
+        }
+
+        /* —— 底部 —— */
+        .footer-note {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #6b5545;
+            padding: 1.2rem 0 0.5rem;
+            border-top: 1px solid #dbbc9f;
+            margin-top: 1.5rem;
+        }
+
+        .footer-note a {
+            color: #854f2e;
+            font-weight: 500;
+            border-bottom: 1px dotted #b2805e;
+        }
+
+        .footer-note a:hover {
+            color: #62361b;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 700px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .card {
+                padding: 1.8rem 1.5rem;
+                border-radius: 30px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            .advantage-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-cta .button-link {
+                padding: 0.65rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .advantage-item {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- HERO 区 -->
+        <div class="card" style="padding-bottom: 2.2rem;">
+            <h1>爱游戏 · 自在相聚</h1>
+            <div class="subhead">在温和的社区里，找回游戏最初的热忱</div>
+            <p style="font-size:1.1rem; text-align:center; max-width: 680px; margin:0 auto 1.2rem;">
+                每个玩家都值得一个轻松、真诚的角落。<br>
+                这里没有喧哗的诱导，只有对游戏本身的热爱与分享。
+            </p>
+            <div class="hero-cta">
+                <a href="https://vipsite-igame.com" class="button-link">爱游戏</a>
+            </div>
+            <p style="text-align:center; margin-top: 1.8rem; color:#6f5542; font-size:0.95rem;">
+                探索游戏世界，从一次安静的对话开始。
+            </p>
+        </div>
+
+        <!-- 优势区 -->
+        <div class="card">
+            <h2>为什么选择这里</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item">
+                    <strong>🎮 内容自然</strong>
+                    <span>不堆砌夸张标语，每篇介绍、每段推荐都来自真实体验与社区反馈。</span>
+                </div>
+                <div class="advantage-item">
+                    <strong>🕊️ 氛围友善</strong>
+                    <span>无论是新玩家还是老玩家，都能平等交流，彼此尊重。</span>
+                </div>
+                <div class="advantage-item">
+                    <strong>📚 持续更新</strong>
+                    <span>关注不同类型的游戏——独立、叙事、策略、休闲……保持新鲜度。</span>
+                </div>
+                <div class="advantage-item">
+                    <strong>🌱 轻量探索</strong>
+                    <span>没有复杂的功能轰炸，页面干净，聚焦于游戏本身。</span>
+                </div>
+            </div>
+            <p style="margin-top:1.4rem;">
+                如果你也厌倦了到处是浮夸弹窗和虚假宣传的游戏站点，不妨来 <a href="https://vipsite-igame.com" style="color:#854f2e; border-bottom:1px solid #c7926d;">爱游戏</a> 小坐片刻。
+            </p>
+        </div>
+
+        <!-- 说明区：场景与提示 -->
+        <div class="card">
+            <h2>在这里，游戏可以这样聊</h2>
+            <p>
+                很多玩家都有这样的经历：发现一款冷门佳作，却找不到安静的角落聊聊感受。
+                <strong style="color:#62412c;">爱游戏</strong> 希望成为那个“刚刚好”的地方——
+                不必担心被安利话术包围，也没有催促你“马上注册”的紧张感。
+            </p>
+            <p>
+                我们会围绕游戏机制、美术风格、叙事亮点展开平实的介绍。比如一篇关于“建造与探索”的短文，
+                会先聊聊同类游戏的演变，再慢慢引出一款值得关注的作品。你可以在句子中自然发现 
+                <a href="https://vipsite-igame.com" style="color:#854f2e; border-bottom:1px solid #c7926d;">爱游戏</a> 
+                的推荐逻辑——不打扰，却有温度。
+            </p>
+            <div style="background:#f4e1d1; border-radius:24px; padding:1.4rem 1.8rem; margin:1.5rem 0;">
+                <h3 style="margin-top:0;">📌 一点小提示</h3>
+                <p>
+                    如果你正在寻找某个特定类型的游戏，或者想回顾某款老作品，不妨在站内多浏览几篇内容。
+                    很多文章末尾都附有相关推荐，但从不使用“必玩”“神作”之类夸张标签。
+                </p>
+                <p style="margin-bottom:0;">
+                    我们相信，好的游戏不需要过度包装，只需要被真诚地看见。
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card">
+            <h2>常见问题 · 摘要</h2>
+            <div class="faq-item">
+                <div class="q">爱游戏 的内容是原创吗？</div>
+                <div class="a">大部分文章由社区成员和编辑撰写，基于实际体验。部分引用会注明来源，保持透明。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">站点会推荐商业游戏吗？</div>
+                <div class="a">会，但前提是内容本身值得讨论。无论是独立游戏还是商业作品，标准一致：真诚、有趣、有特点。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">如何找到更多游戏介绍？</div>
+                <div class="a">网站按类型和主题分类，你也可以通过搜索关键词浏览。首页会不定期更新精选内容。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">这里会有论坛或评论区吗？</div>
+                <div class="a">目前以内容展示为主，未来可能会增加轻松的交流板块，但会保持克制、友好的氛围。</div>
+            </div>
+            <p style="margin-top:1.4rem; font-size:0.95rem; color:#5b4739;">
+                更多疑问？欢迎在 <a href="https://vipsite-igame.com" style="color:#854f2e;">爱游戏</a> 页面中慢慢探索，答案往往藏在细节里。
+            </p>
+        </div>
+
+        <!-- 底部链接 -->
+        <div class="footer-note">
+            <p>
+                由一群普通玩家维护的非官方角落 · 
+                <a href="https://vipsite-igame.com">爱游戏</a> · 以游戏连接彼此
+            </p>
+            <p style="font-size:0.85rem; margin-top:0.6rem; color:#7d6858;">
+                内容仅供参考，不构成任何购买或下载建议。保持好奇，保持温和。
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
